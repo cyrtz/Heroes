@@ -17,9 +17,11 @@ export class HeroService {
     private messageService: MessageService) { }
 
   getHeroes(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.heroesURL).pipe(
+    return this.http.get<Hero[]>(this.heroesURL)
+    .pipe(
+      tap(_ => this.log('fetched heroes')),
       catchError(this.handleError<Hero[]>('getHeroes', []))
-    )
+    );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
