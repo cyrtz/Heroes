@@ -9,6 +9,7 @@ import { HeroService } from '../hero.service';
 })
 export class DashboardComponent {
   heroes: Hero[] = [];
+  
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
